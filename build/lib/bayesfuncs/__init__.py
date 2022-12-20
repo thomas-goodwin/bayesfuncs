@@ -1,4 +1,2 @@
-from . import MCMC
+from . import mcmc
 from . import plotting
-
-from .MCMC import RW_MH

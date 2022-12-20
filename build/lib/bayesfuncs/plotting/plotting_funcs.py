@@ -2,7 +2,7 @@ from math import prod
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-def marg_kdes(list_draws, truths, title, axis_labels, legend_labels, shape=None, **plotargs):
+def plot_marginals(list_draws, truths, title, axis_labels, legend_labels, shape=None, **plotargs):
     '''draws: list of arrays of samples to compare'''
     nplots=len(axis_labels)
     

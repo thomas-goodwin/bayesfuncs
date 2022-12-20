@@ -4,7 +4,7 @@ bayesfuncs.egg-info/PKG-INFO
 bayesfuncs.egg-info/SOURCES.txt
 bayesfuncs.egg-info/dependency_links.txt
 bayesfuncs.egg-info/top_level.txt
-bayesfuncs/MCMC/MCMC_funcs.py
-bayesfuncs/MCMC/__init__.py
+bayesfuncs/mcmc/MCMC_funcs.py
+bayesfuncs/mcmc/__init__.py
 bayesfuncs/plotting/__init__.py
 bayesfuncs/plotting/plotting_funcs.py
