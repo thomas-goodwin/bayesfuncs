@@ -1,5 +1,23 @@
-from time import time
 import numpy as np
+from time import time
+from autograd import grad, hessian
+
+def MCMC(niter, loglik, logprior, x0, label='Whittle', acceptance_lag=1000, **loglikargs):
+
+    def logpost(x): return  loglik(x, **loglikargs) + logprior(x)
+    def obj(x):     return -logpost(x)
+    
+    from scipy.optimize import minimize
+    MAP = minimize(obj, jac = grad(obj), method = 'L-BFGS-B', x0 = x0)
+    if not MAP["success"]:
+        warnings.warn("Optimizer didn't converge")
+        
+    print(f'{label} MAP:  {np.round(MAP.x,3)}')
+    
+    propcov = np.linalg.inv(-hessian(logpost)(MAP.x))
+    # return MAP, propcov, 1   # return and set seed if you need to compare
+    postdraws, A = RW_MH(niter, MAP.x, propcov, logpost, acceptance_lag=acceptance_lag)
+    return MAP, propcov, postdraws
 
 def RW_MH(niter, x0, propcov, posterior, acceptance_lag=1000):
     

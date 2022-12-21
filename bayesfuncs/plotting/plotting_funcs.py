@@ -1,4 +1,4 @@
-from math import prod
+from numpy import prod
 import seaborn as sns
 import matplotlib.pyplot as plt
 
